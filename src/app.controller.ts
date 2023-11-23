@@ -3,14 +3,13 @@ import { LocalAuthGuard, AuthService, JwtAuthGuard, BasicAuthGuard } from './aut
 
 @Controller()
 export class AppController {
-
   constructor(private authService: AuthService) {}
 
-  @Get([ '', 'ping' ])
+  @Get(['', 'ping'])
   healthCheck(): any {
     return {
       statusCode: HttpStatus.OK,
-      message: 'OK',
+      message: 'OK'
     };
   }
 
@@ -19,12 +18,12 @@ export class AppController {
   async login(@Request() req) {
     const token = this.authService.login(req.user, 'basic');
 
-    return  {
+    return {
       statusCode: HttpStatus.OK,
       message: 'OK',
       data: {
-        ...token,
-      },
+        ...token
+      }
     };
   }
 
@@ -35,8 +34,8 @@ export class AppController {
       statusCode: HttpStatus.OK,
       message: 'OK',
       data: {
-        user: req.user,
-      },
+        user: req.user
+      }
     };
   }
 }
